@@ -1,0 +1,9 @@
+
+virt-nutri_front/
+db.sqlite3
+db copy.sqlite3
+*.pyc
+
+media/
+*.log
+test.py

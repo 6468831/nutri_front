@@ -1,0 +1,52 @@
+
+
+<div class="nutri-block mt-4 block-shadow px-4 py-3">
+    <div style="width:100%">Макронутриенты</div>
+    <div class='nutri-block-inner' >
+        {% for food_nutrient in food.food_nutrients %}
+            {% if food_nutrient.nutrient.type == 'Macro' and food_nutrient.nutrient.display %}
+                {% include 'foods/_nutrients_bars.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="nutri-block mt-4 block-shadow px-4 py-3">
+    <div style="width:100%">Водорастворимые витамины</div>
+    <div class='nutri-block-inner' >
+        {% for food_nutrient in food.food_nutrients %}
+            {% if food_nutrient.nutrient.type == 'Vitamin_water' and food_nutrient.nutrient.display %}
+                {% include 'foods/_nutrients_bars.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="nutri-block mt-4 block-shadow px-4 py-3">
+    <div style="width:100%">Жирорастворимые витамины</div>
+    <div class='nutri-block-inner' >
+        {% for food_nutrient in food.food_nutrients %}
+            {% if food_nutrient.nutrient.type == 'Vitamin_fat' and food_nutrient.nutrient.display %}
+                {% include 'foods/_nutrients_bars.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="nutri-block mt-4 block-shadow px-4 py-3">
+    <div style="width:100%">Минералы</div>
+    <div class='nutri-block-inner' >
+        {% for food_nutrient in food.food_nutrients %}
+            {% if food_nutrient.nutrient.type == 'Mineral' and food_nutrient.nutrient.display %}
+                {% include 'foods/_nutrients_bars.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="nutri-block mt-4 block-shadow px-4 py-3">
+    <div style="width:100%">Жирные кислоты</div>
+    <div class='nutri-block-inner' >
+        {% for food_nutrient in food.food_nutrients %}
+            {% if food_nutrient.nutrient.type == 'Fatty_acid' and food_nutrient.nutrient.display %}
+                {% include 'foods/_nutrients_bars.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

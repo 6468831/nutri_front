@@ -1,0 +1,26 @@
+{% load static mathfilters %}
+<script>
+    var amount = 100
+</script>
+<div style="display:flex; gap:20px; align-items: center;">
+    <div style='display:flex; gap:8px'>
+        <div style="width:84px;">{{p_food.content|mul:100|floatformat:1}} {{p_food.nutrient.rda_unit}}</div>
+        <div style="width:50px;">{{p_food.ratio|mul:100|mul:100|floatformat:1}}%</div>
+    </div>
+    
+    <div style="display:flex; position:relative; width:var(--bar-width); justify-content: flex-end;">
+        <div style="align-self:flex-end; width:calc({{p_food.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); height:12px; background-color:{{bar_color}}; border-radius:4px"></div>
+    </div>
+
+
+    <div style="width:180px; margin:auto; text-align:center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{p_food.nutrient.name}}</div>
+    
+    
+    <div style="display:flex; position:relative; width:var(--bar-width)">
+        <div style="width:calc({{s_food.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); height:12px; background-color:{{bar_color}}; border-radius:4px"></div>
+    </div>
+    <div style='display:flex; gap:8px'>
+        <div style="width:50px;">{{s_food.ratio|mul:100|mul:100|floatformat:1}}%</div>
+        <div style="width:80px;">{{s_food.content|mul:100|floatformat:1}} {{s_food.nutrient.rda_unit}}</div>
+    </div>
+</div>    

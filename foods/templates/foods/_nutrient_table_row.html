@@ -1,0 +1,22 @@
+<tr>
+    <td class="ps-5"><a class="no-decoration-link" href="{% url 'foods:max_nutrients' food_nutrient.nutrient.slug %}">
+            {{ food_nutrient.nutrient.name }}
+        </a>
+    </td>
+    <td>{{ food_nutrient.content|floatformat }} {{food_nutrient.nutrient.rda_unit}}</td>
+    <td>{{ food_nutrient.nutrient.rda_male }} {{food_nutrient.nutrient.rda_unit}}</td>
+    <td>
+        <div 
+            class='nutrient-bar' 
+            data-ratio='{{food_nutrient.ratio}}' 
+            style="width:calc({{food_nutrient.ratio}} * var(--bar-width) * 100); 
+                max-width:var(--bar-width); 
+                position: absolute; 
+                height:20px; 
+                background-color:red; 
+                border-radius:20px"
+                >
+                {{ food_nutrient.nutrient.rda }}
+        </div>
+    </td>
+</tr>

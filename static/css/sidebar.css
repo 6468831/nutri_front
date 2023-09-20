@@ -1,0 +1,27 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 50px 30px;
+    height: 100%;
+    background-color: white;
+    border-right-width: 1px;
+    border-right-color:rgb(219, 219, 219);
+    border-right-style: solid;
+    position: fixed;
+    width: 70px;
+    left: 0;
+    margin-top: 70px;
+}
+
+.sidebar-icon {
+    padding:7px;
+}
+
+.sidebar .active-link{
+    background-color: rgb(203, 230, 253);
+    border-radius: 10px;
+    /* padding:7px; */
+    
+}

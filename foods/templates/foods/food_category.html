@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class='foods-main' style="display:flex; gap:100px">
+    {% include 'foods/_category_menu.html' %}
+    <div class="article-main d-flex flex-column" style=" gap:30px; flex-grow:1">
+        <h1>{{current_category.name}}</h1>
+   
+        {% for category, foods in food_categories.items %}
+            <div class="row w-100">
+                {% if food_categories|length > 1 %}
+                    <h3>{{category}}</h3>
+                {% endif %}
+                {% for food in foods %}
+                    <div class="col-lg-6"><a href="{% url 'foods:food' food_slug=food.slug %}">{{food.name}}</a></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    <div>Article goes here</div>
+    </div>
+</div>
+
+
+{% endblock %}

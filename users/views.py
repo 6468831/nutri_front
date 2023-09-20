@@ -1,0 +1,15 @@
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+def login(request):
+    pass
+
+def register(request):
+    pass
+
+def password_reset(request):
+    pass

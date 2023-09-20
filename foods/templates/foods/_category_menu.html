@@ -1,0 +1,13 @@
+<div class='block-shadow px-4 py-3' style="width:200px">
+    <div class='category-menu-items'>
+        {% for category in menu_categories %}
+        <a 
+        class='category-menu-item-link' 
+        href="{% url 'foods:food_category' category.slug %}"
+        id="category-{{category.slug}}"
+        >
+        {{category.name}}
+    </a>
+    {% endfor %}
+    </div>
+</div>

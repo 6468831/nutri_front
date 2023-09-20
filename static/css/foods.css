@@ -1,0 +1,60 @@
+.foods-main {
+  display: flex;
+  gap: 64px
+}
+
+.food-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 960px;
+}
+
+.tags-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tags {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  border-radius: 50px;
+  background-color: white;
+  padding: 3px 8px;
+}
+
+
+.food-comparison-block {
+  width: 840px;
+  align-self: center;
+}
+
+.compare-block,
+.amount-block {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+}
+
+.nutri-block-inner {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px
+}
+
+.td-sidebar {
+  writing-mode: sideways-lr;
+  text-align: center;
+  vertical-align: middle;
+  font-size:1.2rem;
+  color: white;
+  overflow-wrap:normal;
+}

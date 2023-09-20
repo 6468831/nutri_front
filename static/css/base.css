@@ -1,0 +1,83 @@
+
+
+* {
+  font-size:16px;
+  font-family: 'Montserrat'
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+:root{
+  --bar-width:150px;
+}
+
+
+.modal-dialog{
+  margin-top:120px;
+}
+
+.no-underline-link{
+  text-decoration: none;
+}
+
+.hover-underline:hover{
+  text-decoration: underline;
+}
+
+.black-link{
+  color: unset;
+}
+
+.blue-link{
+  color:blue;
+}
+
+
+.dropdown-menu li{
+  font-family:'Montserrat' !important; 
+  font-size:18px
+}
+
+.btn-purple{
+  background-color: #59526F;
+  border-color: #59526F
+}
+
+.btn-purple:hover{
+  background-color: #7669a1;
+  border-color: #867f9c
+}
+
+.btn-purple:active{
+  background-color: #9585c8;
+  border-color: #a69dc5
+}
+
+.btn:focus,
+.form-select:focus,
+textarea:focus, 
+textarea.form-control:focus, 
+input.form-control:focus, 
+input[type=text]:focus, 
+input[type=password]:focus, 
+input[type=email]:focus, 
+input[type=number]:focus, 
+input[type=range]:focus,
+[type=text].form-control:focus, 
+[type=password].form-control:focus, 
+[type=email].form-control:focus, 
+[type=tel].form-control:focus, 
+[contenteditable].form-control:focus {
+  box-shadow: unset;
+}
+
+
+/* bootstrap form-control */
+.fc-sm{
+  padding: 1px 10px;
+  height: 30px;
+}

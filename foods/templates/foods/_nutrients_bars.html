@@ -1,0 +1,14 @@
+<div style="width:var(--bar-width)">
+    <div style="margin-bottom: -5px">
+        
+        <a class="no-decoration-link" href="{% url 'foods:max_nutrients' food_nutrient.nutrient.slug %}">
+            {{ food_nutrient.nutrient.name }}
+        </a>
+    </div>
+
+    <div style="position:relative">
+        <div style="width:var(--bar-width); position:absolute; height:6px; background-color:grey; border-radius:20px"></div>
+        <div class='nutrient-bar' data-ratio='{{food_nutrient.ratio}}' style="width:calc({{food_nutrient.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); position: absolute; height:6px; background-color:red; border-radius:20px">{{ food_nutrient.nutrient.rda }}
+        </div>
+    </div>
+</div>

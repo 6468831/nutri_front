@@ -1,0 +1,77 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class='foods-main'>
+    {% include 'foods/_category_menu.html' %}
+    <div class="food-main">
+        <h1>{{ food.name }}</h1>
+        <div>{{ food.desc }}</div>
+        <div class="tags-block">
+            <h2>Тэги:</h2>
+            <div class="tags">
+                {% for tag in food.tags %}
+                <div class='tag btn btn-sm btn-outline-secondary' style="display:flex; align-items:center; gap:8px">
+                    <!-- <img hight=32 width=32 v-if='tag.icon' :src="'http://127.0.0.1:8000' + tag.icon"> -->
+                    <div>{{ tag.tag }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div style="display:flex; gap:32px;">
+            <div style="width:100%">
+                <div class="amount-block block-shadow px-4 py-3">
+                    Количество:
+                    <input id='food-amount-field' type="number" class='form-control' style="width:100px" value="100" min="0">
+                </div>
+                {% include 'foods/_nutrients.html' %}
+            </div>
+        </div>
+        <div class="mt-5">
+            <h2>Часто задаваемые вопросы</h2>
+        </div>
+        <div class="mt-5">
+            <h2>Способы обработки</h2>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#comparison-select').on('change', (e) => {
+        get_data_for_compared_product(e.target.value)
+    })
+
+    $(window).on('DOMContentLoaded', ()=>{
+        calculate_bars()
+    })
+
+    $('#food-amount-field').on('change keyup', () => {
+        calculate_bars()
+    })
+
+    function calculate_bars(){
+        var amount = document.getElementById('food-amount-field').value
+        var bars = document.getElementsByClassName('nutrient-bar')
+        var bar_width = getComputedStyle(document.body)
+        bar_width = bar_width.getPropertyValue('--bar-width')
+        for (var bar of bars){
+            ratio = bar.dataset.ratio
+            bar.style.width = 'calc(' + bar_width + ' * ' + amount + ' * ' + ratio + ' )'
+        }
+    }
+
+    function get_data_for_compared_product(food_slug){
+
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'foods:get_food_data_for_comparison' %}",
+            data: {
+                food_slug: food_slug
+            },
+            success: function(json){
+                document.getElementById('compare-food-data').innerHTML=json['result']
+            }
+        })
+    }
+</script>
+{% endblock %}
