@@ -1,0 +1,109 @@
+<div class="recipe-sidebar-search block-shadow px-4 py-3">
+        
+    <div class="recipe-type">
+        <div class="recipe-search-sub-title">Показать рецепты</div>
+        <div class="recipe-type-radio-block" style="justify-content: left;">
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='allRecipes' name="recipe-author"
+                id="btn-all-recipes" checked autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-all-recipes">Все</label>
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='myRecipes' name="recipe-author"
+                id="btn-my-recipes" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-my-recipes">Только мои</label>
+        </div>
+    </div>
+    <div class="recipe-type">
+        <div class="recipe-search-sub-title">Тип рецепта</div>
+        <div class="recipe-type-radio-block">
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='breakfast' name="recipe-meal-type"
+                id="btn-breakfast" checked autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-breakfast">Завтрак</label>
+
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='lunch' name="recipe-meal-type" id="btn-lunch"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-lunch">Обед</label>
+
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='dinner' name="recipe-meal-type" id="btn-dinner"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-dinner">Ужин</label>
+
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='snack' name="recipe-meal-type" id="btn-snack"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-snack">Перекус</label>
+
+            <input onchange='getRecipesCount()' type="radio" class="btn-check" value='dessert' name="recipe-meal-type" id="btn-dessert"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btn-dessert">Десерт</label>
+
+        </div>
+    </div>
+    <div>
+        <div class="recipe-search-sub-title">Региональная кухня</div>
+        <select onchange='getRecipesCount()' id='recipe-cuisine' class="form-select">
+            <option value='' selected>Все</option>
+            <option value="russian">Русская</option>
+        </select>
+    </div>
+    <div>
+        <div class="recipe-search-sub-title">Способ приготовления</div>
+        <select onchange='getRecipesCount()' id="recipe-cooking-method" class="form-select">
+            <option value='' selected>Все</option>
+            <option value="boiling">варка</option>
+        </select>
+    </div>
+    <div>
+        <div class="recipe-search-sub-title">Основной ингредиент</div>
+        <div class="input-group">
+            <input onchange='getRecipesCount()' id='recipe-main-ingredient' placeholder='Название продукта...' type="text" class="form-control" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon1">
+                    <img width=24 height=24 src="@/assets/icons/search-interface-symbol.png" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="recipe-search-sub-title">Время готовки</div>
+
+        <input onchange='getRecipesCount()' id="recipe-cooking-time" min='0' max='100' type="range" class="form-range">
+
+    </div>
+    <div>
+        <hr>
+        <div style="display:flex; gap:20px">
+            <div>Найдено <br id="recipe-counter">{{ counter }} блюд</div>
+            <button onclick='get_recipe_list()' class="btn btn-warning btn-sm w-100">Показать</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function get_recipe_list(){
+        var meal_type = document.querySelector('input[name="recipe-meal-type"]:checked').value
+        var cuisine = document.getElementById('recipe-cuisine').value
+        var cooking_method = document.getElementById('recipe-cooking-method').value
+        var author = document.querySelector('input[name="recipe-author"]:checked').value
+        var main_ingredient = document.getElementById('recipe-main-ingredient').value
+        var cooking_time = document.getElementById('recipe-cooking-time').value
+
+        // var url = '{% url "recipes:recipe_list" %}' + '?mealtype=' + recipe_type + '&cuisine=' + cuisine + '&cookingmethod=' + cooking_method + '&mainingredient=' + main_ingredient + '&cookingtime=' + cooking_time + '&author=' + author
+        
+        $.ajax({
+            type: 'GET',
+            url: '{% url "recipes:recipe_list" %}',
+            data: {
+                meal_type: meal_type,
+                cuisine: cuisine,
+                author: author,
+                main_ingredient: main_ingredient,
+                cooking_time: cooking_time,
+                cooking_method: cooking_method,
+            },
+            success: function(json){
+                console.log(json['recipes'])
+                document.getElementById('recipes-main').innerHTML = json['recipes']
+
+            }
+        })
+    }
+</script>

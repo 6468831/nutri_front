@@ -7,7 +7,8 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 !important;
+  overflow: auto !important;
 }
 
 
@@ -15,6 +16,47 @@ body {
   --bar-width:150px;
 }
 
+
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow: scroll;
+}
+
+.modal-open[style] {
+  padding-right: 0px !important;
+}
+
+.hide-mobile{}
+.mobile-margin-auto{}
+.mobile-padding-0{}
+
+@media(max-width:500px){
+  .hide-mobile{
+    display: none !important;
+  }
+  .mobile-margin-auto{
+    margin:auto !important;
+  }
+  .mobile-padding-0{
+    padding:0;
+  }
+  .nutri-table td, th, a{
+    font-size:14px;
+  }
+  .nutri-table td, th{
+    min-width: 72px;
+  }
+  .td-sidebar{
+    width:32px !important;
+  }
+}
+
+.nutri-table tr td:last-child{
+  width: fit-content;
+}
 
 .modal-dialog{
   margin-top:120px;
@@ -80,4 +122,8 @@ input[type=range]:focus,
 .fc-sm{
   padding: 1px 10px;
   height: 30px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }

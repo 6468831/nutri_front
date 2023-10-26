@@ -47,8 +47,6 @@ class CategoryFoodsView(View):
         else:
             food_categories[current_category['name']] = get_category_foods(request, category_slug)
         menu_categories = get_category_list(request)
-        
-        
 
         context = {
             'current_category': current_category,
@@ -87,8 +85,8 @@ class CompareFoodsView(View):
         all_food_nutrients = list(zip(primary_food_nutrients, secondary_food_nutrients))
 
         comparison_foods = get_food_list_to_compare(request)
-
-        print('!!', all_food_nutrients)
+        import json
+        print('!!', json.dumps(all_food_nutrients, indent=2))
         context = {
             'primary_food': primary_food,
             'secondary_food': secondary_food,
@@ -98,3 +96,17 @@ class CompareFoodsView(View):
         }
 
         return render(request, 'foods/food_comparison.html', context)
+    
+
+class CompareFoodsListPageView(View):
+    def get(self, request, food_slug):
+        foods = get_food_list_to_compare(request, food_slug)
+        menu_categories = get_category_list(request)
+        
+        context = {
+            'foods': foods,
+            'menu_categories': menu_categories,
+            'food_slug': food_slug
+        }
+
+        return render(request, 'foods/compare_foods_list_page.html', context)

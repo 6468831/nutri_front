@@ -36,12 +36,10 @@
     mix-blend-mode: normal;
     box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.1);
     transition: 300ms;
-
 }
 
 .recipe-card:hover {
     box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
     transition: 300ms;
 
 }
@@ -53,10 +51,9 @@
     justify-content: center;
     width: 80%;
     margin-left: 10%;
+    margin-top: -40px;
+    margin-bottom: 1.5rem;
     background-color: white;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
 }
 
 .recipe-card-header-title {

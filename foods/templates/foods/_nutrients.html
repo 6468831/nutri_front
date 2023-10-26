@@ -1,47 +1,25 @@
-<table class="table">
-    <thead>
-        <th style="width:36px;"></th>
-        <th>Нутриент</th>
+{% load mathfilters%}
+
+<table class="table nutri-table mt-3" style="">
+    <thead style="background-color:rgb(183, 230, 203)">
+        <th style="width:2.5em"></th>
+        <th style="width:340px; word-wrap: break-word;">Нутриент</th>
         <th>кол-во</th>
-        <th>рда</th>
-        <th>% рда</th>
+        <th>РСП</th>
+        <th>% РСП</th>
     </thead>
     <tbody>
         
-        <td rowspan=8 class='td-sidebar' style="background-color:rgb(221, 100, 100);">Макронутриенты</td>
-        {% for food_nutrient in food.food_nutrients %}
-            {% if food_nutrient.nutrient.type == 'Macro' and food_nutrient.nutrient.display %}
-                {% include 'foods/_nutrient_table_row.html' %}
-            {% endif %}
+        <!-- <td rowspan=8 class='td-sidebar' style="background-color:rgb(221, 100, 100);"><div>Макронутриенты</div></td> -->
+        
+        {% regroup food.food_nutrients by type_name_rus_plural_nominative as types %}
+        {% for type in types %}
+        <td rowspan={{type.list|length|add:1}} class='td-sidebar' style="background-color:{{type.list.0.color}};"><div>{{type.grouper}}</div></td>
+                {% for food_nutrient in type.list %}
+                    {% include 'foods/_nutrient_table_row.html' %}
+                {% endfor %}
         {% endfor %}
-    </tbody>
-    <tbody>
-        <td rowspan=15 class='td-sidebar' style="background-color:rgb(98, 149, 201)">Витамины</td>
-        {% for food_nutrient in food.food_nutrients %}
-            {% if food_nutrient.nutrient.type == 'Vitamin_fat' and food_nutrient.nutrient.display %}
-                {% include 'foods/_nutrient_table_row.html' %}
-            {% endif %}
-        {% endfor %}
-        {% for food_nutrient in food.food_nutrients %}
-            {% if food_nutrient.nutrient.type == 'Vitamin_water' and food_nutrient.nutrient.display %}
-                {% include 'foods/_nutrient_table_row.html' %}
-            {% endif %}
-        {% endfor %}
-    </tbody>
-    <tbody>
-        <td rowspan=15 class='td-sidebar' style="background-color:rgb(196, 127, 200)">Минералы</td>
-        {% for food_nutrient in food.food_nutrients %}
-            {% if food_nutrient.nutrient.type == 'Mineral' and food_nutrient.nutrient.display %}
-                {% include 'foods/_nutrient_table_row.html' %}
-            {% endif %}
-        {% endfor %}
-    </tbody>
-    <tbody>
-        <td rowspan=15 class='td-sidebar' style="background-color:rgb(209, 192, 40)">Жиры</td>
-        {% for food_nutrient in food.food_nutrients %}
-            {% if food_nutrient.nutrient.type == 'Fatty_acid' and food_nutrient.nutrient.display %}
-                {% include 'foods/_nutrient_table_row.html' %}
-            {% endif %}
-        {% endfor %}
+
+        
     </tbody>
 </table>

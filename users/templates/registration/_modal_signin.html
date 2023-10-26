@@ -11,13 +11,12 @@
           <form class='validity' method="POST" action="{% url 'users:login' %}" id="sign-in-form" autocomplete="off">
             {% csrf_token %}
             <div class="container mb-3">
-              <label>{{sign_in_form.username.label}}</label>
-              {{sign_in_form.username}}
+              <input type="text" class="form-control" placeholder="Email">
               <span id="sign-in-email-error" class="error"></span>
             </div>
             <div class="container mb-3">
-              <label>{{sign_in_form.password.label}}</label>
-              {{sign_in_form.password}}
+              <input type="password" class="form-control" placeholder="Пароль">
+              
             </div>
             <div class="container mt-3">
               <button onclick='sign_in_form_submit()' class="form-control btn btn-primary submit-sign-in-form">Войти</button>

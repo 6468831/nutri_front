@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+<div class="d-flex gap-3">
+    {% include 'recipes/recipe_list_sidebar.html' %}
+    <div id="recipes-main">
+        {% include 'recipes/recipe_list_main.html' %}
+    </div>
+</div>
+
+
+{% endblock %}

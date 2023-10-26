@@ -2,6 +2,7 @@
 <script>
     var amount = 100
 </script>
+
 <div style="display:flex; gap:20px; align-items: center;">
     <div style='display:flex; gap:8px'>
         <div style="width:84px;">{{p_food.content|mul:100|floatformat:1}} {{p_food.nutrient.rda_unit}}</div>
@@ -9,7 +10,7 @@
     </div>
     
     <div style="display:flex; position:relative; width:var(--bar-width); justify-content: flex-end;">
-        <div style="align-self:flex-end; width:calc({{p_food.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); height:12px; background-color:{{bar_color}}; border-radius:4px"></div>
+        <div style="align-self:flex-end; width:calc({{p_food.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); height:12px; background-color:{{p_food.color}}; border-radius:4px"></div>
     </div>
 
 
@@ -17,7 +18,7 @@
     
     
     <div style="display:flex; position:relative; width:var(--bar-width)">
-        <div style="width:calc({{s_food.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); height:12px; background-color:{{bar_color}}; border-radius:4px"></div>
+        <div style="width:calc({{s_food.ratio}} * var(--bar-width) * 100); max-width:var(--bar-width); height:12px; background-color:{{s_food.color}}; border-radius:4px"></div>
     </div>
     <div style='display:flex; gap:8px'>
         <div style="width:50px;">{{s_food.ratio|mul:100|mul:100|floatformat:1}}%</div>

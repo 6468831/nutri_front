@@ -1,0 +1,62 @@
+{% load extra_tags %}
+
+<div class="recipe-list">
+    {% for recipe in recipes %}  
+    <div class="recipe-card">
+            
+            <img width=300 height=300 src="{{request|get_domain}}{{recipe.photo}}" class="object-fit-cover cursor-pointer" onclick=''>
+            <div class="recipe-card-header-block block-shadow px-4 py-3 cursor-pointer">
+                <div class="recipe-card-header-title">
+                    {{ recipe.name }}
+                </div>
+                <div class="recipe-card-header-ingredients">
+                    ингредиентов: {{ recipe.ingredient_counter }}
+                </div>
+
+        </div>
+        <div class="d-flex gap-2 px-2 m-auto mb-3">
+            <div class="d-flex flex-column align-items-center">
+                <div>К</div>
+                <div class='px-1' style="border-style:solid; border-color:grey; border-width:2px; border-radius:100px">
+                   {{ recipe.nutrients.Калорийность.0|floatformat:0 }}{{recipe.nutrients.Калорийность.2.0}}
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div>Б</div>
+                <div class='px-1' style="border-style:solid; border-color:grey; border-width:2px; border-radius:100px">
+                   {{ recipe.nutrients.Белок.0|floatformat:0 }}{{recipe.nutrients.Белок.2.0}}
+                </div>
+            </div>   
+            <div class="d-flex flex-column align-items-center">
+                {% with recipe.nutrients|get_value_from_key:'Жиры, всего' as val %}
+                    <div>Ж</div>
+                    <div class='px-1' style="border-style:solid; border-color:grey; border-width:2px; border-radius:100px">
+                        {{ val.0|floatformat:0 }}{{val.2.0}}
+                    </div>
+                {% endwith %}
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div>У</div>
+                <div class='px-1' style="border-style:solid; border-color:grey; border-width:2px; border-radius:100px">
+                   {{ recipe.nutrients.Углеводы.0|floatformat:0 }}{{recipe.nutrients.Углеводы.2.0}}
+                </div>
+            </div>
+        </div>
+        <div class="recipe-card-ingredients-block mb-3">
+            {% for ingredient in recipe.ingredients|slice:'0:2' %}
+                <div class="recipe-card-ingredients-item">
+                    <div>{{ ingredient.name }}</div> 
+                    <div>{{ ingredient.amount }}г</div>
+                </div>
+            {% endfor %}
+            {% if recipe.ingredients|length > 1 %}
+                <i class="material-icons m-auto cursor-pointer">expand_more</i>
+            {% endif %}
+        </div>
+        
+        
+        <button :id='"recipe-" + recipe.id' class="btn btn-sm btn-warning w-50 mx-auto" @click="getRecipe">Редактировать</button>
+    </div>
+    {% endfor %}
+    <pre>{{ recipes }}</pre>
+</div>

@@ -1,10 +1,16 @@
+{% load mathfilters %}
+
 <tr>
-    <td class="ps-5"><a class="no-decoration-link" href="{% url 'foods:max_nutrients' food_nutrient.nutrient.slug %}">
+    <td class=" mobile-padding-0"><a class="no-decoration-link" style='width:340px; word-wrap: break-word;' href="{% url 'foods:max_nutrients' food_nutrient.nutrient.slug %}">
             {{ food_nutrient.nutrient.name }}
         </a>
     </td>
-    <td>{{ food_nutrient.content|floatformat }} {{food_nutrient.nutrient.rda_unit}}</td>
-    <td>{{ food_nutrient.nutrient.rda_male }} {{food_nutrient.nutrient.rda_unit}}</td>
+    <td><span class='content-cell' data-content="{{food_nutrient.content|floatformat}}">{{ food_nutrient.content|mul:100|floatformat }}</span> {{food_nutrient.nutrient.rda_unit}}</td>
+    <td>
+        {% if food_nutrient.nutrient.rda_male %}
+            {{ food_nutrient.nutrient.rda_male }} {{food_nutrient.nutrient.get_rda_unit_display}}
+        {% endif %}
+    </td>
     <td>
         <div 
             class='nutrient-bar' 

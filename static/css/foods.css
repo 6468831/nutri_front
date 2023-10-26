@@ -51,10 +51,15 @@
 }
 
 .td-sidebar {
-  writing-mode: sideways-lr;
+  writing-mode: vertical-lr;
   text-align: center;
   vertical-align: middle;
   font-size:1.2rem;
   color: white;
   overflow-wrap:normal;
+}
+
+.td-sidebar > div{
+  transform: rotate(180deg);
+  transform-origin: center;
 }

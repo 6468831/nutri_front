@@ -32,6 +32,7 @@
         <div class="mt-5">
             <h2>Способы обработки</h2>
         </div>
+        <a href="{% url 'foods:compare_foods_list_page' food_slug=food.slug %}">Сравните {{food.name}} с другими продуктами</a>
     </div>
 </div>
 
@@ -46,11 +47,21 @@
     })
 
     $('#food-amount-field').on('change keyup', () => {
-        calculate_bars()
+        var amount = document.getElementById('food-amount-field').value
+        calculate_contents(amount)
+        calculate_bars(amount)
     })
 
-    function calculate_bars(){
-        var amount = document.getElementById('food-amount-field').value
+    function calculate_contents(amount){
+        var content_cells = document.getElementsByClassName('content-cell')
+        for (var cell of content_cells){
+            content = cell.dataset.content
+            cell.innerHTML = (content * amount).toFixed(1)
+        }
+    }
+
+    function calculate_bars(amount){
+        
         var bars = document.getElementsByClassName('nutrient-bar')
         var bar_width = getComputedStyle(document.body)
         bar_width = bar_width.getPropertyValue('--bar-width')

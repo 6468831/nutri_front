@@ -24,53 +24,44 @@
         </div>
         <h1>{{ primary_food.name }} vs {{secondary_food.name}}</h1>
         <div class="food-comparison-block">
+        
             <div class="mb-5">
                 <h3 class="text-center mb-4">Макронутриенты</h3>
                 {% for p_food, s_food in all_food_nutrients %}
-                    {% if p_food.nutrient.type == 'Macro' and p_food.nutrient.display %}
-                        {% with bar_color='red' %}
-                            {% include 'foods/_comparison_block.html' %}
-                        {% endwith %}
+                    {% if p_food.type_name == 'Macro' and p_food.nutrient.display %}
+                        {% include 'foods/_comparison_block.html' %}
                     {% endif %}
                 {% endfor %}
             </div>
             <div class="mb-5">
                 <h3 class="text-center mb-4">Водорастворимые витамины</h3>
                 {% for p_food, s_food in all_food_nutrients %}
-                    {% if p_food.nutrient.type == 'Vitamin_water' and p_food.nutrient.display %}
-                        {% with bar_color='lightblue' %}
-                            {% include 'foods/_comparison_block.html' %}
-                        {% endwith %}
+                    {% if p_food.type_name == 'Vitamin_water' and p_food.nutrient.display %}
+                        {% include 'foods/_comparison_block.html' %}
                     {% endif %}
                 {% endfor %}
             </div>
             <div class="mb-5">
                 <h3 class="text-center mb-4">Жирорастворимые витамины</h3>
                 {% for p_food, s_food in all_food_nutrients  %}
-                    {% if p_food.nutrient.type == 'Vitamin_fat' and p_food.nutrient.display %}
-                        {% with bar_color='yellow' %}
-                            {% include 'foods/_comparison_block.html' %}
-                        {% endwith %}
+                    {% if p_food.type_name == 'Vitamin_fat' and p_food.nutrient.display %}
+                        {% include 'foods/_comparison_block.html' %}
                     {% endif %}
                 {% endfor %}
             </div>
             <div class="mb-5">
                 <h3 class="text-center mb-4">Минералы</h3>
                 {% for p_food, s_food in all_food_nutrients %}
-                    {% if p_food.nutrient.type == 'Mineral' and p_food.nutrient.display %}
-                        {% with bar_color='#123123' %}
-                            {% include 'foods/_comparison_block.html' %}
-                        {% endwith %}
+                    {% if p_food.type_name == 'Mineral' and p_food.nutrient.display %}
+                        {% include 'foods/_comparison_block.html' %}
                     {% endif %}
                 {% endfor %}
             </div>
             <div class="mb-5">
                 <h3 class="text-center mb-4">Жирные кислоты</h3>
                 {% for p_food, s_food in all_food_nutrients %}
-                    {% if p_food.nutrient.type == 'Fatty_acid' and p_food.nutrient.display %}
-                        {% with bar_color='#aaabbb' %}
-                            {% include 'foods/_comparison_block.html' %}
-                        {% endwith %}
+                    {% if p_food.type_name == 'Fatty_acid' and p_food.nutrient.display %}
+                        {% include 'foods/_comparison_block.html' %}
                     {% endif %}
                 {% endfor %}
             </div>

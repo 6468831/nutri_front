@@ -1,13 +1,13 @@
 {% load static %}
 
-<div class="sidebar">
+<div class="sidebar hide-mobile">
     <a href='#' class="sidebar-icon">
         <img width=24 height=24 src="{% static 'icons/dashboard.png' %}"/>
     </a>
     <a href='#' class="sidebar-icon">
         <img width=24 height=24 src="{% static 'icons/journal.png' %}"/>
     </a>
-    <a href='#' class="sidebar-icon">
+    <a href='{% url "recipes:recipe_list" %}' class="sidebar-icon">
         <img width=24 height=24 src="{% static 'icons/recipe-book.png' %}"/>
     </a>
     <a href='#' class="sidebar-icon">
