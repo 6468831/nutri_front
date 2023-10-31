@@ -4,7 +4,7 @@ DEBUG = False
 # ALLOWED_HOSTS =  ['89.108.115.97', 'nutritracker.ru', 'www.nutritracker.ru', 'rest.nutritracker.ru']
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGINS = ['*']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 STATIC_URL = 'https://nutritracker.ru/static/'
