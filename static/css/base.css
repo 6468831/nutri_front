@@ -10,8 +10,15 @@ body {
   padding: 0 !important;
   overflow: auto !important;
 }
+h3 {
+  font-size: 3rem;
+}
 
-
+@media (max-width:500px){
+  h3{
+    font-size: 2rem;
+  }
+}
 :root{
   --bar-width:150px;
 }
@@ -125,5 +132,42 @@ input[type=range]:focus,
 }
 
 .cursor-pointer{
+  cursor: pointer;
+}
+
+.suggestions-value-button {
+  background-color: white;
+  padding: 2px 5px;
+
+}
+
+.suggestions-value-button:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+
+.suggestions {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgb(211, 211, 211);
+  border-width: 1px;
+  width: 90%;
+  padding: 5px 0;
+  z-index: 10;
+}
+
+
+.suggestions-value-button {
+  background-color: white;
+  padding: 2px 5px;
+
+}
+
+.suggestions-value-button:hover {
+  background-color: aliceblue;
   cursor: pointer;
 }

@@ -9,17 +9,27 @@
     {% include 'foods/_category_menu.html' %}
     <div class="food-main">
         <div class="compare-block block-shadow px-4 py-3" style="display:flex; gap:20px; align-items: center">
-            <select class='form-select' id='comparison-primary-select'>
-                {% for food in comparison_foods %}
-                <option value='{{food.slug}}'>{{ food.name }}</option>
-                {% endfor %}
-            </select>
+            <div class="position-ralative">
+                <input 
+                    id="input-1"
+                    class='exp-input exp-input-required form-control form-control-lg auto-search' 
+                    type="text"  
+                    placeholder="название продукта..."
+                    onclick="get_suggestions(event)"
+                    onkeyup="get_suggestions(event)">
+                <div id='suggestions-Item' class="suggestions"></div>
+            </div>
             <div style="width:max-content; white-space:nowrap;">Сравнить с:</div>
-            <select class='form-select' id='comparison-secondary-select'>
-                {% for food in comparison_foods %}
-                <option value='{{food.slug}}'>{{ food.name }}</option>
-                {% endfor %}
-            </select>
+            <div class="position-ralative">
+                <input 
+                    id='input-2'
+                    class='exp-input exp-input-required form-control form-control-lg auto-search' 
+                    type="text"  
+                    placeholder="название продукта..."
+                    onclick="get_suggestions(event)"
+                    onkeyup="get_suggestions(event)">
+                <div id='suggestions-Item' class="suggestions"></div>
+            </div>
             <button class="btn btn-primary" onclick="compare_products()">Сравнить</button>
         </div>
         <h1>{{ primary_food.name }} vs {{secondary_food.name}}</h1>
@@ -74,14 +84,19 @@
 
 
 <script>
+    var suggestions_url = '{% url "foods:compare_food_suggestions" %}'
     $(window).on('DOMContentLoaded', ()=>{
-        $("#comparison-primary-select").val('{{primary_food.slug}}')
-        $("#comparison-secondary-select").val('{{secondary_food.slug}}')
+        input_1 = document.getElementById('input-1')
+        input_2 = document.getElementById('input-2')
+        input_1.value = '{{primary_food.name}}'
+        input_1.setAttribute('data-slug', '{{primary_food.slug}}')
+        input_2.value = '{{secondary_food.name}}'
+        input_2.setAttribute('data-slug', '{{secondary_food.slug}}')
     })
 
     function compare_products(){
-        foods = [document.getElementById('comparison-primary-select').value,
-                document.getElementById('comparison-secondary-select').value].sort()
+        foods = [document.getElementById('input-1').dataset.slug,
+                document.getElementById('input-2').dataset.slug].sort()
         primary = foods[0]
         secondary = foods[1]
 

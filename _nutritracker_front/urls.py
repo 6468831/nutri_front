@@ -12,6 +12,7 @@ urlpatterns = [
     path('foods/', include(('foods.urls', 'foods'), namespace='foods')),
     path('recipes/', include(('recipes.urls', 'recipes'), namespace='recipes')),
     path('diaries/', include(('diaries.urls', 'diaries'), namespace='diaries')),
+    path('utils/', include(('utils.urls', 'utils'), namespace='utils')),
     path('', index, name='index'),
 ]
 
