@@ -7,8 +7,8 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['*']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-STATIC_URL = 'https://nutritracker.ru/static/'
-MEDIA_URL = 'https://nutritracker.ru/media/'
+STATIC_URL = 'https://static.nutritracker.ru/static/'
+MEDIA_URL = 'https://static.nutritracker.ru/media/'
 
 MEDIA_ROOT = '/home7/media_files'
 STATIC_ROOT = '/home7/static_files'
